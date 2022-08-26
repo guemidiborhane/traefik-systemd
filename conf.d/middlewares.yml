@@ -1,0 +1,12 @@
+http:
+  middlewares:
+    stealth:
+      headers:
+        customResponseHeaders:
+          Server: ''
+          X-Powered-By: ''
+    traefik-real-ip:
+      plugin:
+        traefik-real-ip:
+          excludednets:
+            - 1.1.1.1/24

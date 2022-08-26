@@ -1,0 +1,34 @@
+providers:
+    docker:
+        defaultRule: "PathPrefix(`/`)"
+        exposedbydefault: false
+        network: proxy-network
+    file:
+      directory: /conf.d/
+      watch: true
+
+api:
+   insecure: true
+
+log:
+  level: DEBUG
+
+entrypoints:
+  http:
+    address: :80
+    proxyProtocol:
+      insecure: true
+    forwardedHeaders:
+       insecure: true
+  https:
+    address: :443
+    proxyProtocol:
+      insecure: true
+    forwardedHeaders:
+       insecure: true
+
+experimental:
+  plugins:
+    traefik-real-ip:
+      moduleName: "github.com/soulbalz/traefik-real-ip"
+      version: "v1.0.3"
